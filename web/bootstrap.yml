@@ -12,29 +12,29 @@ server:
 python:
   profiles: local
 connection:
-  user: user
-  password: passs
-  server: 00.00.00.00
+  user: cdc
+  password: c3Des#_R7i
+  server: 10.77.50.90
   port: 1521
-  sid: AGUDA
+  sid: DESACC
 
 ---
 server:
-    port: 5002
+    port: 8080
 
 python:
   profiles: dev
         
 ---
 server:
-  port: 5002
+  port: 8080
 
 python:
   profiles: qa
 
 ---
 server:
-  port: 5002
+  port: 8080
 
 python:
   profiles: prod

@@ -8,7 +8,7 @@ from utility_py.BaseController import BaseController
 from utility_py.Tracing import LoggerAspect
 from utility_py.CatchError import CatchError
 from service.Configuration import Configuration
-from service.OtorgantesService import OtorgantesService
+from service.DataService import DataService
 from service.OracleDB import OracleDB
 
 app = Flask(__name__)
@@ -30,7 +30,7 @@ def test():
 @CatchError()
 @LoggerAspect
 def ObtieneOtorgantes():
-    obtoto = OtorgantesService().sp_obtoto()
+    obtoto = DataService().sp_obtoto()
     return BaseController().success(obtoto, 'Petición exitosa', 'Se obtuvieron data', 200)
 
 

@@ -5,7 +5,7 @@ import cx_Oracle
 from utility_py.BaseValidator import BaseValidator
 from utility_py.InternalException import InternalException
 
-class OtorgantesService:
+class DataService:
     
     def __init__(self):
         db_user = os.getenv("DBAAS_USER_NAME")
@@ -18,16 +18,16 @@ class OtorgantesService:
     def sp_obtoto(self):
         try:
             self.db.connect()
-            PCUR_OTORGANTE = self.db.cursor.var(cx_Oracle.CURSOR)
+            PCUR_DATA = self.db.cursor.var(cx_Oracle.CURSOR)
             PMENSAJE_ERROR = self.db.cursor.var(cx_Oracle.STRING)
-            l_query = self.db.cursor.callproc("SP_OBTIENE", [PCUR_OTORGANTE, PMENSAJE_ERROR])
+            l_query = self.db.cursor.callproc("SP_OBTIENE_DATA", [PCUR_DATA, PMENSAJE_ERROR])
             l_results = l_query[0]
             response = []
             #lst = list(l_results)
             #print(len(lst))
             for cell in l_results:
                 newNode = {
-                        'NUMERO_':cell[0],
+                        'NUMERO_DATA':cell[0],
                         'RAZON_SOCIAL':cell[1]
                 }
                 #response.append({cell[0] : newNode})
@@ -37,7 +37,7 @@ class OtorgantesService:
                 errors.add(BaseValidator.get_business_error(
                     "E001",
                     "Error",
-                    "Error al extraer datos. No se encontraron datos",
+                    "Error al extraer datos. No se encontraron data",
                     status_code = 404)
                 )
                 errors.launch()        
