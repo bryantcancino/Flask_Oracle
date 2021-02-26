@@ -12,11 +12,11 @@ server:
 python:
   profiles: local
 connection:
-  user: cdc
-  password: c3Des#_R7i
-  server: 10.77.50.90
+  user: user
+  password: password
+  server: 00.00.00.00
   port: 1521
-  sid: DESACC
+  sid: SID
 
 ---
 server:
