@@ -15,19 +15,19 @@ class OtorgantesService:
         db_sid = os.getenv("DBAAS_SID")
         self.db = OracleDB(db_user, db_password, db_server, db_port, db_sid)
 
-    def do_obtoto(self):
+    def sp_obtoto(self):
         try:
             self.db.connect()
             PCUR_OTORGANTE = self.db.cursor.var(cx_Oracle.CURSOR)
             PMENSAJE_ERROR = self.db.cursor.var(cx_Oracle.STRING)
-            l_query = self.db.cursor.callproc("CCSP_OBTIENE_OTORGANTE", [PCUR_OTORGANTE, PMENSAJE_ERROR])
+            l_query = self.db.cursor.callproc("SP_OBTIENE", [PCUR_OTORGANTE, PMENSAJE_ERROR])
             l_results = l_query[0]
             response = []
             #lst = list(l_results)
             #print(len(lst))
             for cell in l_results:
                 newNode = {
-                        'NUMERO_OTORGANTE':cell[0],
+                        'NUMERO_':cell[0],
                         'RAZON_SOCIAL':cell[1]
                 }
                 #response.append({cell[0] : newNode})
@@ -37,7 +37,7 @@ class OtorgantesService:
                 errors.add(BaseValidator.get_business_error(
                     "E001",
                     "Error",
-                    "Error al extraer datos. No se encontraron otorgantes",
+                    "Error al extraer datos. No se encontraron datos",
                     status_code = 404)
                 )
                 errors.launch()        
@@ -47,4 +47,4 @@ class OtorgantesService:
         finally:
             self.db.close()            
 
-        return response
+        return response      

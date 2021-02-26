@@ -15,8 +15,9 @@ Prueba de concepto de un servicio con Flask
 En la raiz ejecutar los siguientes comandos:
 
 ```shell
-docker build -t flask_simple:0.1 -f Dockerfile .
-docker run -p 5001:5001 flask_simple:0.1
+docker build -t flask_oracle:0.1 -f Dockerfile .
+docker run -p 5002:5002 flask_oracle:0.1
+#docker exec -i -t 15b0b5cd93c3 /bin/bash
 ```
 
 ### Local
