@@ -1,0 +1,40 @@
+python:
+  application:
+    name: Flask_Oracle
+    
+  profiles:
+    active: local
+
+---
+server:
+  port: 8080
+
+python:
+  profiles: local
+connection:
+  user: cdc
+  password: c3Des#_R7i
+  server: 10.77.50.90
+  port: 1521
+  sid: DESACC
+
+---
+server:
+    port: 8080
+
+python:
+  profiles: dev
+        
+---
+server:
+  port: 8080
+
+python:
+  profiles: qa
+
+---
+server:
+  port: 8080
+
+python:
+  profiles: prod
